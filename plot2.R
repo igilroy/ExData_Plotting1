@@ -18,10 +18,9 @@ res.data<-mutate(res.data,Date_Time=paste(Date,Time,sep = " "))
 #change Date_Time to date format
 res.data[,"Date_Time"]<-dmy_hms(res.data[,"Date_Time"])
 
-
-## Plot1 
-png(filename="plot1.png")
-hist(res.data$Global_active_power,col="red",main="Global Active Power", 
-     xlab="Global Active Power (kilowatts)")
+## Plot 2
+png(filename="plot2.png")
+plot(res.data$Date_Time,res.data$Global_active_power,
+     type="l",ylab="Global Active Power (kilowatts)", xlab="")
 
 dev.off()
