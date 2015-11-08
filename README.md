@@ -1,5 +1,15 @@
 ## Introduction
+This repository is used to store the R scripts and resultant ".png" graphics files produced 
+to complete the first Course Project for the Exploratory Data Analysis course (refer to "Assignment details" section below).
 
+There are four scripts (plot1.R, plot2.R, plot3.R, plot4.R) corresponding to each of the four plots specified in the project.
+
+There are four .png files (plot1.png, plot2.png, plot3.png, plot4.png) that are the corresponding output from each script file.
+
+This repository is a cloned fork from:  https://github.com/rdpeng/ExData_Plotting1
+
+
+## Assignment details
 This assignment uses data from
 the <a href="http://archive.ics.uci.edu/ml/">UC Irvine Machine
 Learning Repository</a>, a popular repository for machine learning

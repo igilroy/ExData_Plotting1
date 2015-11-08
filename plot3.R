@@ -7,7 +7,6 @@ install.packages("lubridate")
 library(lubridate)
 
 ##  read in household power consumption data into a data frame for Feb 1-2 2007
-
 res.data<-read.table("data/household_power_consumption.txt",sep=";",header=FALSE,
                      na.strings="?", 
                      colClasses = c("character","character","numeric","numeric","numeric","numeric",
@@ -23,13 +22,19 @@ res.data<-mutate(res.data,Date_Time=paste(Date,Time,sep = " "))
 #change Date_Time to date format
 res.data[,"Date_Time"]<-dmy_hms(res.data[,"Date_Time"])
 
-## Plot 2
+## Plot 3
 
-png(filename="plot2.png")   ## Openteh output file
+png(filename="plot3.png")   ## Open the output file
 
-##  Create a line graph of Global Active Power readings across the two days, 
-## change the Y axis label, and remove the X axis label
-plot(res.data$Date_Time,res.data$Global_active_power,
-     type="l",ylab="Global Active Power (kilowatts)", xlab="")
+## Create a 3 overlayed line graphs of the three sub-metering readings across the two days
+##  Colour the lines black, red and blue
+##  add a legend, remove the X axis label, and change the Y axis label
 
-dev.off()    ## Close the output file
+with(res.data, plot(Date_Time, Sub_metering_1,type = "l",col="black",
+                    xlab="", ylab="Energy sub metering"))
+with(res.data,lines(Date_Time, Sub_metering_2,type = "l",col="red"))
+with(res.data,lines(Date_Time, Sub_metering_3,type = "l",col="blue"))
+legend("topright", pch = "-", lwd=3, col = c("black", "red", "blue"), 
+       legend = c("Sub_metering_1", "Sub_metering_2","Sub_metering_3"))
+
+dev.off()    ##  Close the output file
